@@ -30,17 +30,38 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
   }
 
   addObserver(eventName: string, observer: TObserver) {
+    if (!(eventName in this.events)) {
+      throw new Error(`
+        Failed to add observer.
+        Event "${eventName}" is not registered.
+      `);
+    }
+
     let observers = this.observers[eventName];
     observers.push(observer);
   }
 
   removeObserver(eventName: string, observer: TObserver) {
+    if (!(eventName in this.events)) {
+      throw new Error(`
+        Failed to remove observer.
+        Event "${eventName}" is not registered.
+      `);
+    }
+
     let observers = this.observers[eventName];
     const observerIndex = observers.indexOf(observer);
     if (observerIndex > -1) observers.splice(observerIndex, 1);
   }
 
   protected notifyObservers(eventName: string, data?: TData) {
+    if (!(eventName in this.events)) {
+      throw new Error(`
+        Failed to notify observers.
+        Event "${eventName}" is not registered.
+      `);
+    }
+
     const observers = this.observers[eventName];
 
     for (const observer of observers) {
@@ -49,6 +70,13 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
   }
 
   emit(eventName: string, data?: TData) {
+    if (!(eventName in this.events)) {
+      throw new Error(`
+        Failed to emit event.
+        Event "${eventName}" is not registered.
+      `);
+    }
+
     this.notifyObservers(eventName, data);
   }
 }
