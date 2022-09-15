@@ -31,7 +31,7 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
   }
 
   eventIsRegistered(eventName: string): boolean {
-    return eventName in this.events;
+    return this.events.includes(eventName);
   }
 
   addObserver(eventName: string, observer: TObserver) {
