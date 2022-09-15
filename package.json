@@ -1,6 +1,6 @@
 {
   "name": "event-manager",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A JavaScript library for managing events.",
   "files": [
     "dist"
@@ -26,7 +26,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Mishieck/event-manager/issues"
   },
