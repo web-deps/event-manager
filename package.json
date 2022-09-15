@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Mishieck/event-manager/issues"
   },
-  "homepage": "https://github.com/Mishieck/event-manager#readme"
+  "homepage": "https://github.com/Mishieck/event-manager#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "@vitest/coverage-c8": "^0.23.2",
+    "jsdom": "^20.0.0",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.1",
+    "vitest": "^0.23.2"
+  }
 }
