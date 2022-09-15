@@ -60,13 +60,6 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
   }
 
   protected notifyObservers(eventName: string, data?: TData) {
-    if (!this.eventIsRegistered(eventName)) {
-      throw new Error(`
-        Failed to notify observers.
-        Event "${eventName}" is not registered.
-      `);
-    }
-
     const observers = this.observers[eventName];
 
     for (const observer of observers) {
