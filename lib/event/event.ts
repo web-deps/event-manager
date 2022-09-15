@@ -1,12 +1,12 @@
 interface IEvent<ISubject, TData> {
-  name: String;
-  subject: ISubject;
+  readonly name: String;
+  readonly subject: ISubject;
   data?: TData;
 }
 
 class Event<ISubject, TData> implements IEvent<ISubject, TData> {
-  public name: string;
-  public subject: ISubject;
+  public readonly name: string;
+  public readonly subject: ISubject;
   public data?: TData;
 
   constructor(name: string, subject: ISubject, data?: TData) {
