@@ -8,9 +8,9 @@ interface IObserverCollection {
 }
 
 abstract class AEventEmitter<ISubject, TData> {
-  abstract subject: ISubject;
-  abstract events: Array<string>;
-  abstract observers: IObserverCollection;
+  abstract readonly subject: ISubject;
+  abstract readonly events: Array<string>;
+  abstract readonly observers: IObserverCollection;
   abstract eventIsRegistered(eventName: string): boolean;
   abstract addObserver(eventName: string, observer: TObserver): void;
   abstract removeObserver(eventName: string, observer: TObserver): void;
@@ -19,9 +19,9 @@ abstract class AEventEmitter<ISubject, TData> {
 }
 
 class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
-  subject: ISubject;
-  events: Array<string>;
-  observers: IObserverCollection = {};
+  readonly subject: ISubject;
+  readonly events: Array<string>;
+  readonly observers: IObserverCollection = {};
 
   constructor(subject: ISubject, events: Array<string>) {
     super();
