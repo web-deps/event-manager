@@ -1,10 +1,24 @@
 {
   "name": "event-manager",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "A JavaScript library for managing events.",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/event-manager.umd.js",
+  "module": "./dist/event-manager.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/event-manager.es.js",
+      "require": "./dist/event-manager.umd.js"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
