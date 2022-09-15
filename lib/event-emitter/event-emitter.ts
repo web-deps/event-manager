@@ -11,6 +11,7 @@ abstract class AEventEmitter<ISubject, TData> {
   abstract subject: ISubject;
   abstract events: Array<string>;
   abstract observers: IObserverCollection;
+  abstract eventIsRegistered(eventName: string): boolean;
   abstract addObserver(eventName: string, observer: TObserver): void;
   abstract removeObserver(eventName: string, observer: TObserver): void;
   protected abstract notifyObservers(eventName: string, data?: TData): void;
@@ -29,8 +30,12 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
     for (const event of events) this.observers[event] = [];
   }
 
+  eventIsRegistered(eventName: string): boolean {
+    return eventName in this.events;
+  }
+
   addObserver(eventName: string, observer: TObserver) {
-    if (!(eventName in this.events)) {
+    if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to add observer.
         Event "${eventName}" is not registered.
@@ -42,7 +47,7 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
   }
 
   removeObserver(eventName: string, observer: TObserver) {
-    if (!(eventName in this.events)) {
+    if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to remove observer.
         Event "${eventName}" is not registered.
@@ -55,7 +60,7 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
   }
 
   protected notifyObservers(eventName: string, data?: TData) {
-    if (!(eventName in this.events)) {
+    if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to notify observers.
         Event "${eventName}" is not registered.
@@ -70,7 +75,7 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
   }
 
   emit(eventName: string, data?: TData) {
-    if (!(eventName in this.events)) {
+    if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to emit event.
         Event "${eventName}" is not registered.
