@@ -1,5 +1,5 @@
-import Event from '../event/event';
-import type { IEvent } from '../event/event';
+import Event from "../event/event";
+import type { IEvent } from "../event/event";
 
 type TObserver = <ISubject, TData>(event: IEvent<ISubject, TData>) => void;
 
