@@ -1,16 +1,16 @@
 {
-  "name": "event-manager",
+  "name": "eve",
   "version": "1.0.0",
   "description": "A JavaScript library for managing events.",
   "files": [
     "dist"
   ],
-  "main": "./dist/event-manager.umd.js",
-  "module": "./dist/event-manager.es.js",
+  "main": "./dist/eve.umd.js",
+  "module": "./dist/eve.es.js",
   "exports": {
     ".": {
-      "import": "./dist/event-manager.es.js",
-      "require": "./dist/event-manager.umd.js"
+      "import": "./dist/eve.es.js",
+      "require": "./dist/eve.umd.js"
     }
   },
   "scripts": {
@@ -22,15 +22,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mishieck/event-manager.git"
+    "url": "git+https://github.com/Mishieck/eve.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mishieck/event-manager/issues"
+    "url": "https://github.com/Mishieck/eve/issues"
   },
-  "homepage": "https://github.com/Mishieck/event-manager#readme",
+  "homepage": "https://github.com/Mishieck/eve#readme",
   "devDependencies": {
     "@types/node": "^18.7.18",
     "@vitest/coverage-c8": "^0.23.2",
