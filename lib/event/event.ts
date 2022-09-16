@@ -1,5 +1,5 @@
 interface EventInterface<SubjectInterface, DataType> {
-  readonly name: String;
+  readonly name: string;
   readonly subject: SubjectInterface;
   data?: DataType;
 }
