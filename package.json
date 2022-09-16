@@ -1,16 +1,16 @@
 {
-  "name": "eve",
+  "name": "eve-man",
   "version": "1.0.0",
   "description": "A JavaScript library for managing events.",
   "files": [
     "dist"
   ],
-  "main": "./dist/eve.umd.js",
-  "module": "./dist/eve.es.js",
+  "main": "./dist/eve-man.umd.js",
+  "module": "./dist/eve-man.es.js",
   "exports": {
     ".": {
-      "import": "./dist/eve.es.js",
-      "require": "./dist/eve.umd.js"
+      "import": "./dist/eve-man.es.js",
+      "require": "./dist/eve-man.umd.js"
     }
   },
   "scripts": {
@@ -22,15 +22,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mishieck/eve.git"
+    "url": "git+https://github.com/Mishieck/eve-man.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mishieck/eve/issues"
+    "url": "https://github.com/Mishieck/eve-man/issues"
   },
-  "homepage": "https://github.com/Mishieck/eve#readme",
+  "homepage": "https://github.com/Mishieck/eve-man#readme",
   "devDependencies": {
     "@types/node": "^18.7.18",
     "@vitest/coverage-c8": "^0.23.2",
