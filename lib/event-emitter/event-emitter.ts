@@ -1,12 +1,12 @@
 import Event from "../event/event";
 import type { EventInterface } from "../event/event";
 
-type ObserverType = <SubjectInterface, DataType>(
+type EventObserverType = <SubjectInterface, DataType>(
   event: EventInterface<SubjectInterface, DataType>
 ) => void;
 
 interface ObserverCollectionInterface {
-  [eventName: string]: Array<ObserverType>;
+  [eventName: string]: Array<EventObserverType>;
 }
 
 abstract class AbstractEventEmitter<SubjectInterface, DataType> {
@@ -14,8 +14,8 @@ abstract class AbstractEventEmitter<SubjectInterface, DataType> {
   abstract readonly events: Array<string>;
   protected abstract observers: ObserverCollectionInterface;
   abstract eventIsRegistered(eventName: string): boolean;
-  abstract addObserver(eventName: string, observer: ObserverType): void;
-  abstract removeObserver(eventName: string, observer: ObserverType): void;
+  abstract addObserver(eventName: string, observer: EventObserverType): void;
+  abstract removeObserver(eventName: string, observer: EventObserverType): void;
   protected abstract notifyObservers(eventName: string, data?: DataType): void;
   abstract emit(eventName: string, data?: DataType): void;
 }
@@ -39,7 +39,7 @@ class EventEmitter<SubjectInterface, DataType> extends AbstractEventEmitter<
     return this.events.includes(eventName);
   }
 
-  addObserver(eventName: string, observer: ObserverType) {
+  addObserver(eventName: string, observer: EventObserverType) {
     if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to add observer.
@@ -51,7 +51,7 @@ class EventEmitter<SubjectInterface, DataType> extends AbstractEventEmitter<
     observers.push(observer);
   }
 
-  removeObserver(eventName: string, observer: ObserverType) {
+  removeObserver(eventName: string, observer: EventObserverType) {
     if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to remove observer.
@@ -87,4 +87,4 @@ class EventEmitter<SubjectInterface, DataType> extends AbstractEventEmitter<
 }
 
 export default EventEmitter;
-export type { AbstractEventEmitter, ObserverType };
+export type { AbstractEventEmitter, EventObserverType };
