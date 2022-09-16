@@ -6,7 +6,6 @@ describe("EventEmitter instantiation", () => {
     const eventEmitter = new EventEmitter({}, ["click", "focus"]);
 
     expect(eventEmitter.subject).toEqual({});
-    expect(eventEmitter.observers).toEqual({ click: [], focus: [] });
     expect(eventEmitter.events).toEqual(["click", "focus"]);
   });
 });
