@@ -1,4 +1,4 @@
-# event-manager
+# eve-man
 
 A JavaScript library for managing events. It can be used for front-end and back-end applications.
 
@@ -7,13 +7,13 @@ A JavaScript library for managing events. It can be used for front-end and back-
 ### NPM
 
 ```bash
-npm install event-manager
+npm install eve-man
 ```
 
 ### Yarn
 
 ```bash
-yarn add event-manager
+yarn add eve-man
 ```
 
 ## Usage
@@ -21,22 +21,22 @@ yarn add event-manager
 ### Creating an Event Emitter
 
 ```js
-import { EventEmitter } from 'event-manager';
+import { EventEmitter } from "eve-man";
 
 // Subject for events
 let form = {
   send: () => {
-    console.log('Sending form');
+    console.log("Sending form");
   },
   clear: () => {
-    console.log('Clearing form');
+    console.log("Clearing form");
   },
   alert: (alertType) => {
     console.log(`Alerting user about ${alertType}.`);
   }
 };
 
-const events = ['submit', 'success', 'failure'];
+const events = ["submit", "success", "failure"];
 const formEventManager = new EventEmitter(form, events);
 ```
 
@@ -45,7 +45,7 @@ const formEventManager = new EventEmitter(form, events);
 ```js
 //  Import EventEmitter and create an event emitter instance 'formEventManager'
 
-formEventManager.addObserver('submit', ({ name, subject }) => {
+formEventManager.addObserver("submit", ({ name, subject }) => {
   subject.send();
 });
 ```
@@ -53,11 +53,11 @@ formEventManager.addObserver('submit', ({ name, subject }) => {
 ### Emitting an Event
 
 ```js
-import { EventEmitter, Event } from 'event-manager';
+import { EventEmitter, Event } from "eve-man";
 
 // Create an event emitter and add an observer
 
-formEventManager.emit(new Event('submit'));
+formEventManager.emit(new Event("submit"));
 
 // Output: 'Sending form'
 ```
