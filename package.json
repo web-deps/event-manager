@@ -6,7 +6,7 @@
     "dist"
   ],
   "main": "./dist/eve-man.umd.js",
-  "types": "./dist/main.d.ts",
+  "types": "./dist/eve-man.es.d.ts",
   "module": "./dist/eve-man.es.js",
   "exports": {
     ".": {
