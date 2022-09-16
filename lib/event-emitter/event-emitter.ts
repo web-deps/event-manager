@@ -1,29 +1,34 @@
 import Event from "../event/event";
-import type { IEvent } from "../event/event";
+import type { EventInterface } from "../event/event";
 
-type TObserver = <ISubject, TData>(event: IEvent<ISubject, TData>) => void;
+type ObserverType = <SubjectInterface, DataType>(
+  event: EventInterface<SubjectInterface, DataType>
+) => void;
 
-interface IObserverCollection {
-  [eventName: string]: Array<TObserver>;
+interface ObserverCollectionInterface {
+  [eventName: string]: Array<ObserverType>;
 }
 
-abstract class AEventEmitter<ISubject, TData> {
-  abstract readonly subject: ISubject;
+abstract class AbstractEventEmitter<SubjectInterface, DataType> {
+  abstract readonly subject: SubjectInterface;
   abstract readonly events: Array<string>;
-  abstract readonly observers: IObserverCollection;
+  abstract readonly observers: ObserverCollectionInterface;
   abstract eventIsRegistered(eventName: string): boolean;
-  abstract addObserver(eventName: string, observer: TObserver): void;
-  abstract removeObserver(eventName: string, observer: TObserver): void;
-  protected abstract notifyObservers(eventName: string, data?: TData): void;
-  abstract emit(eventName: string, data?: TData): void;
+  abstract addObserver(eventName: string, observer: ObserverType): void;
+  abstract removeObserver(eventName: string, observer: ObserverType): void;
+  protected abstract notifyObservers(eventName: string, data?: DataType): void;
+  abstract emit(eventName: string, data?: DataType): void;
 }
 
-class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
-  readonly subject: ISubject;
+class EventEmitter<SubjectInterface, DataType> extends AbstractEventEmitter<
+  SubjectInterface,
+  DataType
+> {
+  readonly subject: SubjectInterface;
   readonly events: Array<string>;
-  readonly observers: IObserverCollection = {};
+  readonly observers: ObserverCollectionInterface = {};
 
-  constructor(subject: ISubject, events: Array<string>) {
+  constructor(subject: SubjectInterface, events: Array<string>) {
     super();
     this.subject = subject;
     this.events = events;
@@ -34,7 +39,7 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
     return this.events.includes(eventName);
   }
 
-  addObserver(eventName: string, observer: TObserver) {
+  addObserver(eventName: string, observer: ObserverType) {
     if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to add observer.
@@ -46,7 +51,7 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
     observers.push(observer);
   }
 
-  removeObserver(eventName: string, observer: TObserver) {
+  removeObserver(eventName: string, observer: ObserverType) {
     if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to remove observer.
@@ -59,15 +64,17 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
     if (observerIndex > -1) observers.splice(observerIndex, 1);
   }
 
-  protected notifyObservers(eventName: string, data?: TData) {
+  protected notifyObservers(eventName: string, data?: DataType) {
     const observers = this.observers[eventName];
 
     for (const observer of observers) {
-      observer(new Event<ISubject, TData>(eventName, this.subject, data));
+      observer(
+        new Event<SubjectInterface, DataType>(eventName, this.subject, data)
+      );
     }
   }
 
-  emit(eventName: string, data?: TData) {
+  emit(eventName: string, data?: DataType) {
     if (!this.eventIsRegistered(eventName)) {
       throw new Error(`
         Failed to emit event.
@@ -80,4 +87,4 @@ class EventEmitter<ISubject, TData> extends AEventEmitter<ISubject, TData> {
 }
 
 export default EventEmitter;
-export type { AEventEmitter, TObserver };
+export type { AbstractEventEmitter, ObserverType };

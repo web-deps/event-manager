@@ -1,15 +1,17 @@
-interface IEvent<ISubject, TData> {
+interface EventInterface<SubjectInterface, DataType> {
   readonly name: String;
-  readonly subject: ISubject;
-  data?: TData;
+  readonly subject: SubjectInterface;
+  data?: DataType;
 }
 
-class Event<ISubject, TData> implements IEvent<ISubject, TData> {
+class Event<SubjectInterface, DataType>
+  implements EventInterface<SubjectInterface, DataType>
+{
   public readonly name: string;
-  public readonly subject: ISubject;
-  public data?: TData;
+  public readonly subject: SubjectInterface;
+  public data?: DataType;
 
-  constructor(name: string, subject: ISubject, data?: TData) {
+  constructor(name: string, subject: SubjectInterface, data?: DataType) {
     this.name = name;
     this.subject = subject;
     if (data) this.data = data;
@@ -17,4 +19,4 @@ class Event<ISubject, TData> implements IEvent<ISubject, TData> {
 }
 
 export default Event;
-export type { IEvent };
+export type { EventInterface };
