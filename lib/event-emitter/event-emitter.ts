@@ -12,7 +12,7 @@ interface ObserverCollectionInterface {
 abstract class AbstractEventEmitter<SubjectInterface, DataType> {
   abstract readonly subject: SubjectInterface;
   abstract readonly events: Array<string>;
-  abstract readonly observers: ObserverCollectionInterface;
+  protected abstract observers: ObserverCollectionInterface;
   abstract eventIsRegistered(eventName: string): boolean;
   abstract addObserver(eventName: string, observer: ObserverType): void;
   abstract removeObserver(eventName: string, observer: ObserverType): void;
@@ -26,7 +26,7 @@ class EventEmitter<SubjectInterface, DataType> extends AbstractEventEmitter<
 > {
   readonly subject: SubjectInterface;
   readonly events: Array<string>;
-  readonly observers: ObserverCollectionInterface = {};
+  protected observers: ObserverCollectionInterface = {};
 
   constructor(subject: SubjectInterface, events: Array<string>) {
     super();
