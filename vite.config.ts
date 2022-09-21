@@ -6,8 +6,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "lib/main.ts"),
-      name: "eve-man",
-      fileName: (format) => `eve-man.${format}.js`
+      name: "event-manager",
+      fileName: (format) => `event-manager.${format}.js`
     }
   },
   plugins: [
