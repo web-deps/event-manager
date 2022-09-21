@@ -1,6 +1,6 @@
 {
   "name": "@web-deps/event-manager",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A JavaScript library for managing events. It can be used both on the frontend and backend.",
   "files": [
     "dist"
