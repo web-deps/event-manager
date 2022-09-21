@@ -1,4 +1,4 @@
-# eve-man
+# event-manager
 
 A JavaScript library for managing events. It can be used for front-end and back-end applications.
 
@@ -7,13 +7,13 @@ A JavaScript library for managing events. It can be used for front-end and back-
 ### NPM
 
 ```bash
-npm install eve-man
+npm install event-manager
 ```
 
 ### Yarn
 
 ```bash
-yarn add eve-man
+yarn add event-manager
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ yarn add eve-man
 ### Creating an Event Emitter
 
 ```js
-import { EventEmitter } from "eve-man";
+import { EventEmitter } from "event-manager";
 
 // Subject for events
 let form = {
@@ -53,7 +53,7 @@ formEventManager.addObserver("submit", ({ name, subject }) => {
 ### Emitting an Event
 
 ```js
-import { EventEmitter, Event } from "eve-man";
+import { EventEmitter, Event } from "event-manager";
 
 // Create an event emitter and add an observer
 
