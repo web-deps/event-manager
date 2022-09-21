@@ -7,13 +7,13 @@ A JavaScript library for managing events. It can be used for front-end and back-
 ### NPM
 
 ```bash
-npm install event-manager
+npm install @web-deps/event-manager
 ```
 
 ### Yarn
 
 ```bash
-yarn add event-manager
+yarn add @web-deps/event-manager
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ yarn add event-manager
 ### Creating an Event Emitter
 
 ```js
-import { EventEmitter } from "event-manager";
+import { EventEmitter } from "@web-deps/event-manager";
 
 // Subject for events
 let form = {
@@ -53,7 +53,7 @@ formEventManager.addObserver("submit", ({ name, subject }) => {
 ### Emitting an Event
 
 ```js
-import { EventEmitter, Event } from "event-manager";
+import { EventEmitter, Event } from "@web-deps/event-manager";
 
 // Create an event emitter and add an observer
 
