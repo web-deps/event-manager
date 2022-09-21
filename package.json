@@ -1,17 +1,17 @@
 {
-  "name": "eve-man",
+  "name": "@web-deps/event-manager",
   "version": "0.1.0",
-  "description": "A JavaScript library for managing events.",
+  "description": "A JavaScript library for managing events. It can be used both on the frontend and backend.",
   "files": [
     "dist"
   ],
-  "main": "./dist/eve-man.umd.js",
-  "types": "./dist/eve-man.es.d.ts",
-  "module": "./dist/eve-man.es.js",
+  "main": "./dist/event-manager.umd.js",
+  "types": "./dist/event-manager.es.d.ts",
+  "module": "./dist/event-manager.es.js",
   "exports": {
     ".": {
-      "import": "./dist/eve-man.es.js",
-      "require": "./dist/eve-man.umd.js"
+      "import": "./dist/event-manager.es.js",
+      "require": "./dist/event-manager.umd.js"
     }
   },
   "scripts": {
@@ -23,15 +23,28 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mishieck/eve-man.git"
+    "url": "git+https://github.com/web-deps/event-manager.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "event",
+    "events",
+    "event-management",
+    "event-emitter",
+    "event-dispatcher",
+    "event-observer",
+    "event-listener",
+    "observer-pattern"
+  ],
+  "author": {
+    "name": "Mishieck Mwale",
+    "email": "mishieckdev@gmail.com",
+    "url": "https://mishieckdev.netlify.app"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mishieck/eve-man/issues"
+    "url": "https://github.com/web-deps/event-manager/issues"
   },
-  "homepage": "https://github.com/Mishieck/eve-man#readme",
+  "homepage": "https://github.com/web-deps/event-manager#readme",
   "devDependencies": {
     "@types/node": "^18.7.18",
     "@vitest/coverage-c8": "^0.23.2",
